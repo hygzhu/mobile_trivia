@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">mobile_trivia</string>
+    <string name="play_button">Play</string>
+</resources>
