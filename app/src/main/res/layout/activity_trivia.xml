@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <VideoView
             android:id="@+id/videoView"
             android:layout_alignParentTop="true"
@@ -17,6 +18,9 @@
             android:layout_alignParentRight="true"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"/>
+
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,23 +35,33 @@
 
                 <TextView
                     android:id="@+id/lives_display"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
+                    android:layout_alignParentTop="true"
+                    android:shadowColor="@android:color/black"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="1"
+                    android:text="lives: ?"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/white"
                     android:textSize="36sp"
-                    android:textStyle="bold"
-                    tools:text="lives: 3" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/score_display"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@android:color/black"
+                    android:layout_alignParentTop="true"
+                    android:shadowColor="@android:color/black"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="1"
+                    android:text="score: ?"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/white"
                     android:textSize="36sp"
-                    android:textStyle="bold"
-                    tools:text="score: 0"
-                    android:layout_gravity="center" />
+                    android:textStyle="bold" />
 
 
             </LinearLayout>

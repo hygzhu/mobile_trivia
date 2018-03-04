@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">mobile_trivia</string>
     <string name="play_button">Play</string>
+    <string name="congratulations_text">Congratulations!</string>
+    <string name="menu_button">Back To Menu</string>
 </resources>
