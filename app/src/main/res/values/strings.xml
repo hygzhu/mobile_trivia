@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">mobile_trivia</string>
+    <string name="app_name">Anime Song Trivia</string>
     <string name="play_button">Play</string>
     <string name="congratulations_text">Congratulations!</string>
     <string name="menu_button">Back To Menu</string>
+    <string name="app_title">Anime Song Trivia</string>
+    <string name="link"><a href="http://openings.moe">Anime Songs taken from Openings.moe</a></string>
 </resources>

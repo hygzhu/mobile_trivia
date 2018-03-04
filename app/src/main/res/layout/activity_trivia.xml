@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/black"
     tools:context="com.example.mobile_trivia.TriviaActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <VideoView
+        <com.google.android.exoplayer2.ui.PlayerView
             android:id="@+id/videoView"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"/>
-
-
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:use_controller="false"></com.google.android.exoplayer2.ui.PlayerView>
 
 
         <LinearLayout
@@ -28,8 +24,8 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_height="match_parent"
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1.0"
                 android:orientation="vertical">
 
@@ -63,13 +59,44 @@
                     android:textSize="36sp"
                     android:textStyle="bold" />
 
+                <TextView
+                    android:id="@+id/previous_anime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:shadowColor="@android:color/black"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="1"
+                    android:text="Previous Anime: none"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/previous_guess"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:shadowColor="@android:color/black"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="1"
+                    android:text="You guessed: none"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1.0"
+                android:layout_weight="1.95"
                 android:orientation="vertical"
                 android:padding="2dp">
 
@@ -91,10 +118,10 @@
                         android:id="@+id/answer2"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:text="answer2"
                         android:layout_weight="1"
                         android:alpha="0.7"
-                        android:onClick="nextSong"/>
+                        android:onClick="nextSong"
+                        android:text="answer2" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -106,26 +133,25 @@
                         android:id="@+id/answer3"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:text="answer3"
                         android:layout_weight="1"
                         android:alpha="0.7"
-                        android:onClick="nextSong"/>
+                        android:onClick="nextSong"
+                        android:text="answer3" />
 
                     <Button
                         android:id="@+id/answer4"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:text="answer4"
                         android:layout_weight="1"
                         android:alpha="0.7"
-                        android:onClick="nextSong"/>
+                        android:onClick="nextSong"
+                        android:text="answer4" />
                 </LinearLayout>
 
             </LinearLayout>
         </LinearLayout>
 
     </RelativeLayout>
-
 
 
 </android.support.constraint.ConstraintLayout>
