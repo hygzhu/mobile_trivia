@@ -74,7 +74,7 @@ public class TriviaActivity extends AppCompatActivity {
         score = 0;
         lives = 3;
         animeName = "none";
-        guess = "nome";
+        guess = "none";
 
         playerView = findViewById(R.id.videoView);
         setUpTrivia();
