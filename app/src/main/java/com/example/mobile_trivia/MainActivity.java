@@ -16,7 +16,10 @@ public class MainActivity extends AppCompatActivity {
     public void startTrivia(View view){
         Intent intent = new Intent(this, TriviaActivity.class);
         startActivity(intent);
+    }
 
-
+    public void openSettings(View view){
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
     }
 }

@@ -45,7 +45,6 @@ import java.util.Random;
 
 public class TriviaActivity extends AppCompatActivity {
 
-    private VideoView videoView;
     private String currentVideoFile;
     private String animeName;
     private String guess;
@@ -61,9 +60,7 @@ public class TriviaActivity extends AppCompatActivity {
     PlayerView playerView;
     boolean playWhenReady = true;
     int currentWindow = 0;
-    long playbackPosition = 0;
     SimpleExoPlayer player;
-    String link = "http://openings.moe/video/Ending2-Konosuba.webm";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
