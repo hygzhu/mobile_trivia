@@ -7,6 +7,15 @@
     android:background="@android:color/background_dark"
     tools:context="com.example.mobile_trivia.MainActivity">
 
+    <ImageView
+        android:id="@+id/background"
+        style="@style/BackGroundImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        tools:ignore="ContentDescription" />
+
     <Button
         android:id="@+id/settingsbutton"
         android:layout_width="wrap_content"
@@ -15,18 +24,18 @@
         android:text="@string/settings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.616"
+        app:layout_constraintVertical_bias="0.608"
         tools:text="@string/settings" />
 
     <Button
         android:id="@+id/playbutton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="47dp"
         android:layout_marginBottom="8dp"
         android:onClick="startTrivia"
         android:text="@string/play_button"
@@ -36,7 +45,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.981"
+        app:layout_constraintVertical_bias="0.996"
         tools:text="@string/play_button" />
 
     <TextView
@@ -47,6 +56,10 @@
         android:text="@string/app_title"
         android:textColor="@color/exo_edit_mode_background_color"
         android:textSize="36sp"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="1"
         app:layout_constraintBottom_toTopOf="@+id/playbutton"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -7,4 +7,10 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+    <style name="BackGroundImageView">
+    <item name="android:alpha">0.7</item>
+    <item name="android:scaleType">fitXY</item>
+    <item name="android:src">@drawable/background_1</item>
+</style>
 </resources>

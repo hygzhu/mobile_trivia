@@ -16,7 +16,7 @@ public class ScoreActivity extends AppCompatActivity {
         setContentView(R.layout.activity_score);
 
         score = Integer.parseInt(getIntent().getStringExtra("SCORE"));
-        TextView scoreView = (TextView)findViewById(R.id.score_display);
+        TextView scoreView = findViewById(R.id.score_display);
         scoreView.setText("Your score was:  " + score);
     }
 
