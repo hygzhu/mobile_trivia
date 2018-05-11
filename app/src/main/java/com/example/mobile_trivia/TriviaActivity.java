@@ -3,10 +3,12 @@ package com.example.mobile_trivia;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -48,11 +50,13 @@ public class TriviaActivity extends AppCompatActivity {
     private String currentVideoFile;
     private String animeName;
     private String guess;
-    private int animeIndex;
     private List<String> otherAnimes = new ArrayList<>();;
     private int[] buttonIDs = new int[] {R.id.answer1, R.id.answer2, R.id.answer3, R.id.answer4};
     private int score;
     private int lives;
+
+    private boolean endless;
+    private boolean visible;
 
     private final int options = 4;
 
@@ -67,9 +71,21 @@ public class TriviaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia);
 
+        //load settings
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        endless = sharedPref.getBoolean("endless_mode_switch", true);
+        visible = sharedPref.getBoolean("visible_mode_switch", true);
+
+        if(endless){
+            lives = -1;
+            TextView livesView = findViewById(R.id.lives_display);
+            livesView.setText("Endless Mode");
+        }else{
+            lives = 3;
+        }
 
         score = 0;
-        lives = 3;
+
         animeName = "none";
         guess = "none";
 
@@ -86,7 +102,7 @@ public class TriviaActivity extends AppCompatActivity {
             score++;
         }else {
             lives--;
-            if (lives <= 0) {
+            if (lives <= 0 && !endless) {
                 Intent intent = new Intent(this, ScoreActivity.class);
                 intent.putExtra("SCORE", Integer.toString(score));
                 startActivity(intent);
@@ -119,8 +135,10 @@ public class TriviaActivity extends AppCompatActivity {
         //update lives and score
         TextView scoreView = (TextView)findViewById(R.id.score_display);
         scoreView.setText("Score: " + score);
-        TextView livesView = (TextView)findViewById(R.id.lives_display);
-        livesView.setText("Lives: " + lives);
+        if(!endless){
+            TextView livesView = (TextView)findViewById(R.id.lives_display);
+            livesView.setText("Lives: " + lives);
+        }
         TextView previousView = (TextView)findViewById(R.id.previous_anime);
         previousView.setText("Previous Anime: " + animeName);
         TextView guessView = (TextView)findViewById(R.id.previous_guess);
@@ -133,7 +151,6 @@ public class TriviaActivity extends AppCompatActivity {
 
             //gets the video to display
             int random = new Random().nextInt(obj.length());
-            animeIndex = random;
             currentVideoFile = "http://openings.moe/video/" + ((JSONObject)obj.get(random)).get("file");
             animeName = ((JSONObject)obj.get(random)).get("source").toString();
 
@@ -186,6 +203,11 @@ public class TriviaActivity extends AppCompatActivity {
         Uri uri = Uri.parse(currentVideoFile);
         MediaSource mediaSource = buildMediaSource(uri);
         player.prepare(mediaSource, true, false);
+
+        if(!visible){
+            //turns off video, leaves on audio
+            playerView.setAlpha(0f);
+        }
     }
 
     private MediaSource buildMediaSource(Uri uri) {
