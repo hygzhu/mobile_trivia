@@ -9,28 +9,15 @@
 
     <!-- Strings related to Settings -->
 
-    <!-- Example General settings -->
+    <!-- Gameplay settings -->
     <string name="pref_header_general">General</string>
 
-    <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact
-        based on your message history
-    </string>
+    <string name="pref_visible_mode">Show Song Video</string>
+    <string name="pref_visible_mode_desc">Whether the video for the song is displayed or not</string>
 
-    <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
 
-    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
-    <string-array name="pref_example_list_titles">
-        <item>Always</item>
-        <item>When possible</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_example_list_values">
-        <item>1</item>
-        <item>0</item>
-        <item>-1</item>
-    </string-array>
+    <string name="pref_endless_mode">Endless Mode</string>
+    <string name="pref_endless_mode_desc">Guess Songs forever</string>
 
     <string name="settings">Settings</string>
     <string name ="pref_header_gameplay">Gameplay</string>
