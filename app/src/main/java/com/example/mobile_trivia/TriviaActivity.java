@@ -2,6 +2,7 @@ package com.example.mobile_trivia;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -9,6 +10,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -49,11 +51,13 @@ public class TriviaActivity extends AppCompatActivity {
 
     private String currentVideoFile;
     private String animeName;
+    private String previousAnimeName;
     private String guess;
-    private List<String> otherAnimes = new ArrayList<>();;
+    private List<String> otherAnimes = new ArrayList<>();
     private int[] buttonIDs = new int[] {R.id.answer1, R.id.answer2, R.id.answer3, R.id.answer4};
     private int score;
     private int lives;
+    private int songsPlayed;
 
     private boolean endless;
     private boolean visible;
@@ -79,26 +83,50 @@ public class TriviaActivity extends AppCompatActivity {
         if(endless){
             lives = -1;
             TextView livesView = findViewById(R.id.lives_display);
-            livesView.setText("Endless Mode");
+            livesView.setText("Lives: Infinite");
+
+            TextView modeView = findViewById(R.id.mode_display);
+            modeView.setText("Mode: Endless");
         }else{
             lives = 3;
         }
 
         score = 0;
+        songsPlayed = 0;
 
-        animeName = "none";
-        guess = "none";
+        previousAnimeName = "N/A";
+        animeName = "N/A";
+        guess = "N/A";
 
         playerView = findViewById(R.id.videoView);
         setUpTrivia();
     }
 
 
+    public void backToMenu(View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void viewDetailsDialog(View view){
+        AlertDialog alertDialog = new AlertDialog.Builder(TriviaActivity.this).create();
+        alertDialog.setTitle("Details");
+        alertDialog.setMessage("Previous Anime: "+ previousAnimeName + "\nYou guessed: "+ guess);
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
+    }
+
     public void nextSong(View view){
 
         guess = ((Button) view).getText().toString();
+        previousAnimeName = animeName;
         //Create next trivia question
-        if(guess == animeName){
+        if(guess.equals(animeName)){
             score++;
         }else {
             lives--;
@@ -108,6 +136,7 @@ public class TriviaActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         }
+        songsPlayed++;
         player.release();
         setUpTrivia();
     }
@@ -123,8 +152,6 @@ public class TriviaActivity extends AppCompatActivity {
             json = new String(buffer, "UTF-8");
         } catch (Exception e){
             //should probably catch this
-        } finally {
-
         }
         return json;
     }
@@ -132,18 +159,15 @@ public class TriviaActivity extends AppCompatActivity {
     //Creates video view and updates buttons with random anime
     private void setUpTrivia(){
 
-        //update lives and score
-        TextView scoreView = (TextView)findViewById(R.id.score_display);
+        //update values
+        TextView scoreView = findViewById(R.id.score_display);
         scoreView.setText("Score: " + score);
+        TextView songNumberView = findViewById(R.id.song_number_display);
+        songNumberView.setText("Songs Played: " + songsPlayed);
         if(!endless){
-            TextView livesView = (TextView)findViewById(R.id.lives_display);
+            TextView livesView = findViewById(R.id.lives_display);
             livesView.setText("Lives: " + lives);
         }
-        TextView previousView = (TextView)findViewById(R.id.previous_anime);
-        previousView.setText("Previous Anime: " + animeName);
-        TextView guessView = (TextView)findViewById(R.id.previous_guess);
-        guessView.setText("You guessed: " + guess);
-
         //Gets random anime
         String jsonString = openJSONResource();
         try{
@@ -168,19 +192,18 @@ public class TriviaActivity extends AppCompatActivity {
                 }
 
                 otherAnimes.add(newAnimeName);
-                Button button = (Button)findViewById(buttonIDs[i]);
+                Button button = findViewById(buttonIDs[i]);
                 button.setText(newAnimeName);
             }
 
             //randomly place the correct answer in one of the buttons
             random = new Random().nextInt(options - 1);
-            Button button = (Button)findViewById(buttonIDs[random]);
+            Button button = findViewById(buttonIDs[random]);
             button.setText(animeName);
 
         } catch (Exception e) {
             //should probably catch this
             e.printStackTrace();
-        } finally {
         }
 
         initializePlayer();

@@ -69,39 +69,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_XLARGE;
     }
 
-    /**
-     * Binds a preference's summary to its value. More specifically, when the
-     * preference's value is changed, its summary (line of text below the
-     * preference title) is updated to reflect the value. The summary is also
-     * immediately updated upon calling this method. The exact display format is
-     * dependent on the type of preference.
-     *
-     * @see #sBindPreferenceSummaryToValueListener
-     */
-    private static void bindPreferenceSummaryToValue(Preference preference) {
-        // Set the listener to watch for value changes.
-        preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
-
-
-        if (preference instanceof CheckBoxPreference)
-        {
-            // Trigger the listener immediately with the preference's
-            // current value.
-            sBindPreferenceSummaryToValueListener.onPreferenceChange(
-                    preference,
-                    PreferenceManager.getDefaultSharedPreferences(
-                            preference.getContext()).getBoolean(preference.getKey(),true));
-        }else{
-            // Trigger the listener immediately with the preference's
-            // current value.
-            sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
-                    PreferenceManager
-                            .getDefaultSharedPreferences(preference.getContext())
-                            .getString(preference.getKey(), ""));
-        }
-
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -156,9 +123,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.pref_gameplay);
             setHasOptionsMenu(true);
-
-            //bindPreferenceSummaryToValue(findPreference("visible_mode_switch"));
-            //bindPreferenceSummaryToValue(findPreference("endless_mode_switch"));
         }
 
         @Override

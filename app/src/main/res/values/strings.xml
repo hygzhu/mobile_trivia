@@ -7,9 +7,6 @@
     <string name="link"><a href="http://openings.moe">Anime Songs taken from Openings.moe</a></string>
     <string name="title_activity_settings">Settings</string>
 
-    <!-- Strings related to Settings -->
-
-    <!-- Gameplay settings -->
     <string name="pref_header_general">General</string>
 
     <string name="pref_visible_mode">Show Song Video</string>
@@ -21,4 +18,11 @@
 
     <string name="settings">Settings</string>
     <string name ="pref_header_gameplay">Gameplay</string>
+    <string name="lives_mode">Mode: Survival</string>
+    <string name="songs_played">Songs Played: 0</string>
+    <string name="menu">menu</string>
+    <string name="details">details</string>
+
+    <string name="lives">lives: ?</string>
+    <string name="score">score: 0</string>
 </resources>
