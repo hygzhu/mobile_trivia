@@ -77,7 +77,7 @@ public class TriviaActivity extends AppCompatActivity {
 
         //load settings
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        endless = sharedPref.getBoolean("endless_mode_switch", true);
+        endless = sharedPref.getBoolean("endless_mode_switch", false);
         visible = sharedPref.getBoolean("visible_mode_switch", true);
 
         if(endless){
@@ -197,7 +197,7 @@ public class TriviaActivity extends AppCompatActivity {
             }
 
             //randomly place the correct answer in one of the buttons
-            random = new Random().nextInt(options - 1);
+            random = new Random().nextInt(options);
             Button button = findViewById(buttonIDs[random]);
             button.setText(animeName);
 
