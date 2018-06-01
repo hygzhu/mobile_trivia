@@ -21,8 +21,10 @@
     <string name="lives_mode">Mode: Survival</string>
     <string name="songs_played">Songs Played: 0</string>
     <string name="menu">menu</string>
+    <string name="quit">Quit</string>
     <string name="details">details</string>
 
     <string name="lives">lives: ?</string>
     <string name="score">score: 0</string>
+    <string name="next_song">Next Song</string>
 </resources>

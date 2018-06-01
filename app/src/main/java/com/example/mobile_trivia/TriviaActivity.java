@@ -16,6 +16,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -137,6 +139,31 @@ public class TriviaActivity extends AppCompatActivity {
             }
         }
         songsPlayed++;
+
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.before_layout);
+        linearLayout.setVisibility(View.GONE);
+        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.after_layout);
+        relativeLayout.setVisibility(View.VISIBLE);
+
+        TextView status_text = findViewById(R.id.status_text);
+        if(guess.equals(animeName)){
+            status_text.setText("Correct");
+        }else{
+            status_text.setText("Incorrect");
+        }
+
+        TextView after_details_text = findViewById(R.id.after_details_text);
+        after_details_text.setText("Anime name: \n"+ previousAnimeName + "\nYou guessed: \n"+ guess);
+    }
+
+    public void continuePlay(View view){
+
+
+        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.after_layout);
+        relativeLayout.setVisibility(View.GONE);
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.before_layout);
+        linearLayout.setVisibility(View.VISIBLE);
+
         player.release();
         setUpTrivia();
     }

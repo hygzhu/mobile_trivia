@@ -71,6 +71,13 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // By default, show MainPreferences
+        Intent intent = getIntent();
+        if (intent.getStringArrayExtra(EXTRA_SHOW_FRAGMENT) == null) {
+            getIntent().putExtra(EXTRA_SHOW_FRAGMENT, GameplayPreferenceFragment.class.getName());
+        }
+
         super.onCreate(savedInstanceState);
         setupActionBar();
     }

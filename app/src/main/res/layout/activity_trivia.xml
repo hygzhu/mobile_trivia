@@ -55,7 +55,7 @@
                     android:layout_height="34dp"
                     android:layout_above="@+id/lives_display"
                     android:onClick="backToMenu"
-                    android:text="@string/menu" />
+                    android:text="@string/quit" />
 
                 <Button
                     android:id="@+id/details_button"
@@ -120,13 +120,16 @@
             </RelativeLayout>
 
             <LinearLayout
+                android:id="@+id/before_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1.95"
                 android:orientation="vertical"
-                android:padding="2dp">
+                android:padding="2dp"
+                android:visibility="visible">
 
                 <LinearLayout
+                    android:id="@+id/buttons_a"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0">
@@ -137,7 +140,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:alpha="0.7"
-                        android:onClick="nextSong"/>
+                        android:onClick="nextSong" />
 
                     <Button
                         android:id="@+id/answer2"
@@ -145,7 +148,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:alpha="0.7"
-                        android:onClick="nextSong"/>
+                        android:onClick="nextSong" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -159,7 +162,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:alpha="0.7"
-                        android:onClick="nextSong"/>
+                        android:onClick="nextSong" />
 
                     <Button
                         android:id="@+id/answer4"
@@ -167,10 +170,57 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:alpha="0.7"
-                        android:onClick="nextSong"/>
+                        android:onClick="nextSong" />
                 </LinearLayout>
 
             </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/after_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:orientation="vertical"
+                android:padding="2dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/status_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:layout_above="@+id/after_details_text"
+                    android:layout_gravity="center"
+                    android:shadowColor="@android:color/black"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="1"
+                    android:text="TextView"
+                    android:textColor="@color/exo_edit_mode_background_color"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/after_details_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="68dp"
+                    android:layout_above="@+id/continue_button"
+                    android:shadowColor="@android:color/black"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="1"
+                    android:text="TextView"
+                    android:textColor="@color/exo_edit_mode_background_color"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/continue_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="bottom"
+                    android:onClick="continuePlay"
+                    android:text="@string/next_song" />
+            </RelativeLayout>
         </LinearLayout>
 
     </RelativeLayout>

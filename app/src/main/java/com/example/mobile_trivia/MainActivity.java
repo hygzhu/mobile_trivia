@@ -13,7 +13,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         //sets background image
         ImageView img = findViewById(R.id.background);
         int rand_image = 1 + (int)(Math.random() * ((359 - 1) + 1));
