@@ -11,7 +11,8 @@
         android:roundIcon="@drawable/ic_launcher_template"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -19,6 +20,7 @@
         </activity>
         <activity
             android:name=".TriviaActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize|screenLayout|uiMode" />
         <activity android:name=".ScoreActivity" />
         <activity

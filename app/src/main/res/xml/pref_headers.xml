@@ -4,6 +4,6 @@
     <header
         android:fragment="com.example.mobile_trivia.SettingsActivity$GameplayPreferenceFragment"
         android:icon="@drawable/ic_info_black_24dp"
-        android:title="@string/pref_header_gameplay" />
+        android:title="@string/settings" />
 
 </preference-headers>
