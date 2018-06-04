@@ -60,6 +60,7 @@ public class TriviaActivity extends AppCompatActivity {
     private int score;
     private int lives;
     private int songsPlayed;
+    private List<String> playHistory = new ArrayList<>();
 
     private boolean endless;
     private boolean visible;
@@ -127,6 +128,8 @@ public class TriviaActivity extends AppCompatActivity {
 
         guess = ((Button) view).getText().toString();
         previousAnimeName = animeName;
+        playHistory.add(animeName);
+
         //Create next trivia question
         if(guess.equals(animeName)){
             score++;
@@ -204,6 +207,13 @@ public class TriviaActivity extends AppCompatActivity {
             int random = new Random().nextInt(obj.length());
             currentVideoFile = "http://openings.moe/video/" + ((JSONObject)obj.get(random)).get("file");
             animeName = ((JSONObject)obj.get(random)).get("source").toString();
+
+            //prevents getting an anime we have already played
+            while(playHistory.contains(animeName)){
+                random = new Random().nextInt(obj.length());
+                currentVideoFile = "http://openings.moe/video/" + ((JSONObject)obj.get(random)).get("file");
+                animeName = ((JSONObject)obj.get(random)).get("source").toString();
+            }
 
             //Generate 4 other random anime names and add the names to the buttons
             for (int i = 0; i < options; i++){

@@ -179,7 +179,7 @@
                 android:id="@+id/after_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1.0"
+                android:layout_weight="1.95"
                 android:orientation="vertical"
                 android:padding="2dp"
                 android:visibility="gone">
@@ -189,6 +189,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="39dp"
                     android:layout_above="@+id/after_details_text"
+                    android:layout_alignParentStart="true"
                     android:layout_gravity="center"
                     android:shadowColor="@android:color/black"
                     android:shadowDx="2"
@@ -202,7 +203,7 @@
                 <TextView
                     android:id="@+id/after_details_text"
                     android:layout_width="match_parent"
-                    android:layout_height="68dp"
+                    android:layout_height="99dp"
                     android:layout_above="@+id/continue_button"
                     android:shadowColor="@android:color/black"
                     android:shadowDx="2"
