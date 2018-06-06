@@ -62,8 +62,10 @@ public class TriviaActivity extends AppCompatActivity {
     private int songsPlayed;
     private List<String> playHistory = new ArrayList<>();
 
+    //preferences
     private boolean endless;
     private boolean visible;
+    private int timeLimit;
 
     private final int options = 4;
 
@@ -82,6 +84,7 @@ public class TriviaActivity extends AppCompatActivity {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         endless = sharedPref.getBoolean("endless_mode_switch", false);
         visible = sharedPref.getBoolean("visible_mode_switch", true);
+        timeLimit = Integer.parseInt(sharedPref.getString("guess_time_preference", "0"));
 
         if(endless){
             lives = -1;
@@ -200,6 +203,7 @@ public class TriviaActivity extends AppCompatActivity {
         }
         //Gets random anime
         String jsonString = openJSONResource();
+
         try{
             final JSONArray obj = new JSONArray(jsonString);
 

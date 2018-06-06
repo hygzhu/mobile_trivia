@@ -13,5 +13,13 @@
         android:summary="@string/pref_endless_mode_desc"
         android:title="@string/pref_endless_mode" />
 
+    <ListPreference
+        android:key="guess_time_preference"
+        android:title="Guessing Time Limit"
+        android:entries="@array/guess_time_limit"
+        android:entryValues="@array/guess_time_limit_values"
+        android:summary="Time limit to guess the song: %s"
+        android:defaultValue="0"/>
+
 
 </PreferenceScreen>
