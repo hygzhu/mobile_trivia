@@ -61,6 +61,7 @@ public class TriviaActivity extends AppCompatActivity {
     private int lives;
     private int songsPlayed;
     private List<String> playHistory = new ArrayList<>();
+    private android.os.CountDownTimer timer;
 
     //preferences
     private boolean endless;
@@ -105,7 +106,29 @@ public class TriviaActivity extends AppCompatActivity {
         guess = "N/A";
 
         playerView = findViewById(R.id.videoView);
+
+        //countdown timer object
+        final TextView timer_text = findViewById(R.id.timer_text);
+        timer = new android.os.CountDownTimer(timeLimit * 1000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                timer_text.setText("" +millisUntilFinished / 1000);
+            }
+            public void onFinish() {
+                 nextSong(null);
+            }
+        };
+
+        //Show trivia stuff in case broken
+        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.after_layout);
+        relativeLayout.setVisibility(View.GONE);
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.before_layout);
+        linearLayout.setVisibility(View.VISIBLE);
+
+
         setUpTrivia();
+        if(timeLimit != 0){
+            timer.start();
+        }
     }
 
 
@@ -129,7 +152,12 @@ public class TriviaActivity extends AppCompatActivity {
 
     public void nextSong(View view){
 
-        guess = ((Button) view).getText().toString();
+        if(view != null){
+            guess = ((Button) view).getText().toString();
+            timer.cancel();
+        }else{
+            guess = "none";
+        }
         previousAnimeName = animeName;
         playHistory.add(animeName);
 
@@ -138,13 +166,18 @@ public class TriviaActivity extends AppCompatActivity {
             score++;
         }else {
             lives--;
-            if (lives <= 0 && !endless) {
-                Intent intent = new Intent(this, ScoreActivity.class);
-                intent.putExtra("SCORE", Integer.toString(score));
-                startActivity(intent);
-            }
         }
         songsPlayed++;
+
+        //update values
+        TextView scoreView = findViewById(R.id.score_display);
+        scoreView.setText("Score: " + score);
+        TextView songNumberView = findViewById(R.id.song_number_display);
+        songNumberView.setText("Songs Played: " + songsPlayed);
+        if(!endless){
+            TextView livesView = findViewById(R.id.lives_display);
+            livesView.setText("Lives: " + lives);
+        }
 
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.before_layout);
         linearLayout.setVisibility(View.GONE);
@@ -170,8 +203,19 @@ public class TriviaActivity extends AppCompatActivity {
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.before_layout);
         linearLayout.setVisibility(View.VISIBLE);
 
+
+        if (lives <= 0 && !endless) {
+            Intent intent = new Intent(this, ScoreActivity.class);
+            intent.putExtra("SCORE", Integer.toString(score));
+            startActivity(intent);
+        }
+
         player.release();
         setUpTrivia();
+
+        if(timeLimit != 0){
+            timer.start();
+        }
     }
 
     private String openJSONResource(){

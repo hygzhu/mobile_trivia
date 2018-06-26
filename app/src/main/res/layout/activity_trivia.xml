@@ -63,7 +63,8 @@
                     android:layout_height="34dp"
                     android:layout_below="@+id/menu_button"
                     android:onClick="viewDetailsDialog"
-                    android:text="@string/details" />
+                    android:text="@string/details"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/song_number_display"
@@ -115,6 +116,19 @@
                     android:textColor="@android:color/white"
                     android:textSize="14sp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/timer_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/menu_button"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="24sp"
+                    tools:text="@string/timer_text_default"
+                    android:shadowColor="@android:color/black"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="1"/>
 
 
             </RelativeLayout>

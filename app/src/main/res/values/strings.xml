@@ -27,6 +27,7 @@
     <string name="lives">lives: ?</string>
     <string name="score">score: 0</string>
     <string name="next_song">Next Song</string>
+    <string name="timer_text_default">Time: Unlimited</string>
 
 
     <string-array name="guess_time_limit">
