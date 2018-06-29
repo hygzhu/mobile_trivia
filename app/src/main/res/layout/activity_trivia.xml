@@ -20,7 +20,7 @@
             android:id="@+id/videoView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:use_controller="false"></com.google.android.exoplayer2.ui.PlayerView>
+            app:use_controller="false"/>
 
 
         <LinearLayout
@@ -154,7 +154,9 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:alpha="0.7"
-                        android:onClick="nextSong" />
+                        android:onClick="nextSong"
+                        style="?android:attr/borderlessButtonStyle"
+                        />
 
                     <Button
                         android:id="@+id/answer2"
@@ -162,7 +164,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:alpha="0.7"
-                        android:onClick="nextSong" />
+                        android:onClick="nextSong"
+                        style="?android:attr/borderlessButtonStyle"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -176,7 +179,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:alpha="0.7"
-                        android:onClick="nextSong" />
+                        android:onClick="nextSong"
+                        style="?android:attr/borderlessButtonStyle"/>
 
                     <Button
                         android:id="@+id/answer4"
@@ -184,7 +188,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:alpha="0.7"
-                        android:onClick="nextSong" />
+                        android:onClick="nextSong"
+                        style="?android:attr/borderlessButtonStyle"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -204,12 +209,12 @@
                     android:layout_height="39dp"
                     android:layout_above="@+id/after_details_text"
                     android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
                     android:layout_gravity="center"
                     android:shadowColor="@android:color/black"
                     android:shadowDx="2"
                     android:shadowDy="2"
                     android:shadowRadius="1"
-                    android:text="TextView"
                     android:textColor="@color/exo_edit_mode_background_color"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -223,7 +228,6 @@
                     android:shadowDx="2"
                     android:shadowDy="2"
                     android:shadowRadius="1"
-                    android:text="TextView"
                     android:textColor="@color/exo_edit_mode_background_color"
                     android:textSize="16sp" />
 
