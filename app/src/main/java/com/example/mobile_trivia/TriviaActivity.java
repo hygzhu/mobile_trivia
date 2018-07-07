@@ -13,6 +13,7 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -210,7 +211,9 @@ public class TriviaActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        player.release();
+        if(player != null){
+            player.release();
+        }
         setUpTrivia();
 
         if(timeLimit != 0){
@@ -253,13 +256,13 @@ public class TriviaActivity extends AppCompatActivity {
 
             //gets the video to display
             int random = new Random().nextInt(obj.length());
-            currentVideoFile = "http://openings.moe/video/" + ((JSONObject)obj.get(random)).get("file");
+            currentVideoFile = "https://openings.moe/video/" + ((JSONObject)obj.get(random)).get("file")+ ".webm";
             animeName = ((JSONObject)obj.get(random)).get("source").toString();
 
             //prevents getting an anime we have already played
             while(playHistory.contains(animeName)){
                 random = new Random().nextInt(obj.length());
-                currentVideoFile = "http://openings.moe/video/" + ((JSONObject)obj.get(random)).get("file");
+                currentVideoFile = "https://openings.moe/video/" + ((JSONObject)obj.get(random)).get("file") + ".webm";
                 animeName = ((JSONObject)obj.get(random)).get("source").toString();
             }
 
